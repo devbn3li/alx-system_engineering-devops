@@ -1,2 +1,2 @@
 #!/bin/bash
-printf '%s,' . .. *[!/] *[!/]* | sed 's/,$/\n/'
+ls -am --file-type
