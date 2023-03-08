@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# List files in current directory in long format
+ls -l
+
+# List files in parent directory in long format
+ls -l ../
+
+# List files in /boot directory in long format
+ls -l /boot/
