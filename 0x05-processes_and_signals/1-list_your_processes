@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
 #Bash script that displays a list of currently running processes.
 
-processes=$(ps aux)
-tree=$(pstree -A)
-for process in $processes; do
-    pid=$(echo "$process" | awk '{print $2}')
-    ppid=$(echo "$process" | awk '{print $3}')
-    tree+=" $pid (ppid=$ppid)"
-done
-echo "$tree"
+ps -auxf
