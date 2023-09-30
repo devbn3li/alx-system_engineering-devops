@@ -7,10 +7,10 @@
 i=1
 while [ $i -le 10 ]; do
     if [[ $i == 4 ]]; then
-    echo "Bad Luck"
+    echo "bad luck"
     ((i++))
     elif [[ $i == 8 ]]; then
-    echo "Good Luck"
+    echo "good luck"
     ((i++))
     else
     echo "Best School"
