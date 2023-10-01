@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Bash script that displays:
+# The content of the current directory
+# In a list format
+# Where only the part of the name after the first dash is displayed
+
+current_dir=$(pwd)
+
+files=$(ls $current_dir)
+
+for file in $files; do
+    filename="${file#*-}";
+
+    echo "$filename"
+done
