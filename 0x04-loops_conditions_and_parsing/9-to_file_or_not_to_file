@@ -10,6 +10,7 @@ if [[ -f school ]]; then
     fi
     if [[ -f school ]]; then
         echo "school is a regular file"
+        else
     fi
     else
     echo "school file does not exist"
