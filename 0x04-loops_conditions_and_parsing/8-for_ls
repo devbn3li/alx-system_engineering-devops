@@ -6,7 +6,7 @@
 
 current_dir=$(pwd)
 
-files=$(ls $current_dir)
+files=$(ls "$current_dir")
 
 for file in $files; do
     filename="${file#*-}";
