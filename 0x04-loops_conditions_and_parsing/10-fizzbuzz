@@ -14,6 +14,6 @@ for x in {1..100}; do
     elif (( $x % 3 == 0 )); then
         echo "Buzz"
     else
-        echo $x
+        echo "$x"
     fi 
 done
