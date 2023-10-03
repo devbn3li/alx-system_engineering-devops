@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Simply match School
 
-\bSchool
+puts ARGV[0].scan(/school/).join
