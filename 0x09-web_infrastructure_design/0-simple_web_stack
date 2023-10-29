@@ -1,6 +1,6 @@
 Design of a Single Server Web Infrastructure for www.foobar.com:
 
-# User Accesses www.foobar.com:
+## User Accesses www.foobar.com:
 1. A user wants to access the website www.foobar.com by typing the URL into their web browser.
 
 **1. What is a Server:**
