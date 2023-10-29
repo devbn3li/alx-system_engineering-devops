@@ -1,0 +1,37 @@
+Design of a Single Server Web Infrastructure for www.foobar.com:
+
+# User Accesses www.foobar.com:
+1. A user wants to access the website www.foobar.com by typing the URL into their web browser.
+
+**1. What is a Server:**
+- A server is a computer or software system that provides services, data, or resources to other computers (clients) over a network, like the internet. In this case, the server will host the website.
+
+**2. Role of the Domain Name:**
+- The domain name, in this case, www.foobar.com, is a human-readable address that is used to access the website. It provides a user-friendly way to locate resources on the internet.
+
+**3. Type of DNS Record for www.foobar.com:**
+- The DNS (Domain Name System) record for www.foobar.com typically includes an "A" record that points to the server's IP address, such as 8.8.8.8. This record resolves the domain name to the server's IP so users can access the website.
+
+**4. Role of the Web Server (Nginx):**
+- The web server (Nginx) handles HTTP requests from users' browsers. It serves static files like HTML, CSS, and images and can also proxy requests to the application server for dynamic content.
+
+**5. Role of the Application Server:**
+- The application server hosts the web application code (e.g., PHP, Python, Ruby, etc.). It processes user requests, interacts with the database, and generates dynamic content to be sent back to the web server, which then delivers it to the user's browser.
+
+**6. Role of the Database (MySQL):**
+- The database (MySQL) stores and manages the website's data, such as user accounts, posts, or product information. The application server communicates with the database to retrieve or store data as required by user requests.
+
+**7. Server Communication with User's Computer:**
+- The server communicates with the user's computer over the internet using the HTTP/HTTPS protocol. When the user types www.foobar.com in their browser, a DNS lookup is performed to find the server's IP address (8.8.8.8). The user's browser then establishes an HTTP(S) connection to the server at this IP to request web pages.
+
+**Issues with the Infrastructure:**
+1. **Single Point of Failure (SPOF):**
+   - The current infrastructure has a single server, which is a single point of failure. If the server experiences hardware failure or other issues, the entire website becomes inaccessible. To mitigate this, you could consider implementing redundancy by adding a backup server and load balancing.
+
+2. **Downtime During Maintenance:**
+   - When performing maintenance or deploying new code, the web server often needs to be restarted. This can result in downtime during the maintenance window, causing inconvenience to users. To minimize downtime, consider implementing a zero-downtime deployment strategy or load balancing across multiple web servers.
+
+3. **Limited Scalability:**
+   - The current infrastructure is limited in its ability to handle high incoming traffic. Scaling resources, such as web and application servers, to accommodate increased traffic is not straightforward. To address this, you can implement auto-scaling or consider using a cloud-based hosting solution that allows easy resource scaling.
+
+In summary, this single-server infrastructure can host www.foobar.com, but it has limitations in terms of reliability, scalability, and potential downtime during maintenance. Addressing these issues would involve redundancy, load balancing, and scaling strategies to ensure a more robust and responsive web hosting environment.
