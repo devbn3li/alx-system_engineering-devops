@@ -1,0 +1,49 @@
+Design of a Three-Server Web Infrastructure for www.foobar.com:
+
+**Additional Elements:**
+1. 2 Servers
+2. 1 Web Server (Nginx)
+3. 1 Application Server
+4. 1 Load Balancer (HAproxy)
+5. 1 Set of Application Files (Your Code Base)
+6. 1 Database (MySQL)
+
+**Explanation for Adding Each Element:**
+- **Two Servers:** We add two servers to introduce redundancy and reduce the risk of a single point of failure (SPOF) for better availability.
+
+- **Load Balancer (HAproxy):** The load balancer distributes incoming web traffic evenly across multiple servers, improving website performance, fault tolerance, and scalability.
+
+- **Database (MySQL):** The database stores and manages the website's data. We introduce a database for data persistence and retrieval.
+
+- **Application Server:** The application server hosts the web application code and processes user requests. Separating the application and web server enhances scalability and maintainability.
+
+- **Web Server (Nginx):** The web server handles HTTP requests and serves static content, enhancing web application performance.
+
+- **Set of Application Files (Code Base):** This contains the website's source code, enabling the application server to process dynamic content.
+
+**Load Balancer Configuration:**
+- The load balancer is configured with a distribution algorithm, like Round Robin or Least Connections. For this setup, let's use Round Robin. It works by distributing requests in a circular manner to the available servers. The first request goes to the first server, the second request to the second server, and so on, in a loop.
+
+**Active-Active vs. Active-Passive Setup:**
+- In this setup, we are configuring an Active-Active setup. Both servers are actively serving requests. The difference between Active-Active and Active-Passive setups:
+  - Active-Active: Both servers are actively processing requests, distributing the load evenly. It provides better performance and resource utilization.
+  - Active-Passive: In an Active-Passive setup, one server (active) handles traffic while the other server (passive) is on standby. If the active server fails, the passive one takes over. It's mainly used for redundancy but doesn't utilize resources efficiently.
+
+**Database Primary-Replica (Master-Slave) Cluster:**
+- In the database, we set up a Primary-Replica (Master-Slave) cluster to improve data availability and redundancy. The Primary node is the master, while the Replica node is a slave. The Primary node handles write operations, and the Replica replicates data from the Primary node to handle read operations.
+
+**Difference Between Primary and Replica Nodes:**
+- Primary Node: Handles write operations (e.g., INSERT, UPDATE, DELETE). It's responsible for maintaining the authoritative copy of the database and may have a more significant load.
+- Replica Node: Handles read operations (e.g., SELECT). It replicates data from the Primary node to maintain a copy. It lightens the read load on the Primary node and provides data redundancy.
+
+**Issues with the Infrastructure:**
+1. **SPOF:**
+   - Load balancer: The load balancer itself can be a single point of failure. Consider implementing a redundant load balancer for high availability.
+   - Database Primary: The Primary database node can be a single point of failure. Implementing a failover mechanism can address this concern.
+
+2. **Security Issues:**
+   - No Firewall: The infrastructure lacks a firewall for network security. Implement a firewall to protect against unauthorized access.
+   - No HTTPS: The absence of HTTPS may expose user data to security risks. Secure the web traffic with SSL/TLS certificates to encrypt data in transit.
+
+3. **No Monitoring:**
+   - There is no monitoring system in place to track server health and performance. Implement monitoring tools to detect and address issues proactively.

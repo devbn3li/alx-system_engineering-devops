@@ -33,5 +33,3 @@ Design of a Single Server Web Infrastructure for www.foobar.com:
 
 3. **Limited Scalability:**
    - The current infrastructure is limited in its ability to handle high incoming traffic. Scaling resources, such as web and application servers, to accommodate increased traffic is not straightforward. To address this, you can implement auto-scaling or consider using a cloud-based hosting solution that allows easy resource scaling.
-
-In summary, this single-server infrastructure can host www.foobar.com, but it has limitations in terms of reliability, scalability, and potential downtime during maintenance. Addressing these issues would involve redundancy, load balancing, and scaling strategies to ensure a more robust and responsive web hosting environment.

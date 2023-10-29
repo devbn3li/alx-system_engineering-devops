@@ -1,0 +1,23 @@
+Design of a Multi-Server Web Infrastructure with Load Balancer for www.foobar.com:
+
+**Additional Elements:**
+1. 1 Server
+2. 1 Load Balancer (HAproxy) configured as a cluster with the other one
+3. Split Components (Web Server, Application Server, Database) with their own server
+
+**Explanation for Adding Each Element:**
+- **1 Server:** Adding an additional server provides redundancy and fault tolerance. It ensures that the website remains accessible even if one server experiences issues or needs maintenance.
+
+- **1 Load Balancer (HAproxy) configured as a cluster with the other one:** Configuring HAproxy as a cluster ensures load balancing availability. If one load balancer fails, the other can take over, maintaining uninterrupted service. It also improves scalability.
+
+- **Split Components with Their Own Server:** Separating components onto dedicated servers enhances system performance, security, and ease of maintenance. It allows for optimized resource allocation and improved isolation of services.
+
+This infrastructure divides the responsibilities and resources efficiently while providing high availability and redundancy.
+
+Specifics about this infrastructure:
+
+1. **Load Balancer Cluster (HAproxy):** The load balancers are configured as a cluster to ensure high availability. If one load balancer fails, the other can take over, distributing traffic evenly among multiple servers for better performance and fault tolerance.
+
+2. **Split Components:** Each component (Web Server, Application Server, Database) has its dedicated server to ensure resource isolation and improved scalability. This separation helps in efficient resource allocation, maintenance, and the ability to scale each component independently.
+
+By splitting the components onto different servers and configuring a load balancer cluster, this infrastructure addresses issues like single points of failure, enhances performance, and ensures high availability, making it a robust solution for hosting www.foobar.com.

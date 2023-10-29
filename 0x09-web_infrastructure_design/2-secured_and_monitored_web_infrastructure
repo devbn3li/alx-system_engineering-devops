@@ -1,0 +1,38 @@
+Design of a Secured and Monitored Three-Server Web Infrastructure for www.foobar.com:
+
+**Additional Elements:**
+1. 3 Firewalls
+2. 1 SSL Certificate for HTTPS
+3. 3 Monitoring Clients (Data Collectors for Sumo Logic or other monitoring services)
+
+**Explanation for Adding Each Element:**
+- **Firewalls:** Firewalls are added to enhance security by controlling incoming and outgoing network traffic, allowing only authorized connections. They protect against unauthorized access and potential threats.
+
+- **SSL Certificate for HTTPS:** An SSL certificate is added to serve traffic over HTTPS, ensuring that data exchanged between the user's browser and the server is encrypted and secure. It safeguards sensitive information.
+
+- **Monitoring Clients:** Monitoring clients collect data on the performance, health, and activity of the infrastructure. This information helps identify and resolve issues proactively, ensuring system reliability and availability.
+
+**What Are Firewalls For:**
+- Firewalls are network security devices that monitor and control incoming and outgoing network traffic. They establish a barrier between a trusted network (your servers) and an untrusted network (the internet), protecting against unauthorized access, cyber threats, and malware.
+
+**Why Traffic Served Over HTTPS:**
+- Serving traffic over HTTPS is essential for security. It encrypts data exchanged between the user's browser and the server, ensuring confidentiality and integrity. It also authenticates the website, preventing man-in-the-middle attacks.
+
+**What Monitoring Is Used For:**
+- Monitoring is used to track the performance, security, and health of the infrastructure. It helps in identifying issues, resource utilization, and system health, enabling proactive management and timely issue resolution.
+
+**How Monitoring Tool Collects Data:**
+- Monitoring tools collect data through monitoring clients installed on each server. These clients continuously collect metrics and logs, which are then sent to a central monitoring service, like Sumo Logic. The service aggregates and analyzes this data to provide insights and alerts.
+
+**Monitoring Web Server QPS (Queries Per Second):**
+- To monitor web server QPS, you would set up data collectors to track incoming requests and server responses. Metrics related to request rate, response times, and resource utilization can be collected and analyzed to measure QPS.
+
+**Issues with the Infrastructure:**
+1. **Terminating SSL at the Load Balancer Level:**
+   - Terminating SSL at the load balancer can be an issue as it means that data between the load balancer and the web servers is transmitted in an unencrypted form. If an attacker gains access to the internal network, they can intercept this traffic. It's generally more secure to maintain end-to-end encryption.
+
+2. **Having Only One MySQL Server Capable of Accepting Writes:**
+   - Having a single MySQL server that can accept writes creates a potential single point of failure for the database. If this server fails, it can result in data loss or service interruption. Implementing replication or failover mechanisms for MySQL can address this issue.
+
+3. **Servers with All the Same Components:**
+   - Having servers with identical components (database, web server, and application server) may lead to resource bottlenecks during traffic spikes. It's essential to understand the role of each server and allocate resources accordingly. Also, consider horizontal scaling for improved performance and redundancy.
