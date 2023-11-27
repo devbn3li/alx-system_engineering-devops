@@ -2,7 +2,7 @@
 # server-01 logs into web-01
 
 
-eval $(ssh-agent -s)
+eval $("ssh-agent")
 
 ssh-add ~/.ssh/school
 
