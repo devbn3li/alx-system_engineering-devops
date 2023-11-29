@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 # Bash script that transfers a file from our client to a server
+# The path to the file to be transferred
+# The IP of the server we want to transfer the file to
+# The username scp connects with
+# scp -P 2222 /tmp/file username@IP:/tmp/
 
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <IP> <username> <file path>"
-    exit 1
+if [ "$#" -lt 3 ]
+then
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+elif [ "$#" -eq 3 ]
+then
+    scp -o StrictHostKeyChecking=no "$1" "$3@$2:~/"
+else
+    scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2:~/"
 fi
-
-scp -P 2222 $3 $2@$1:/tmp/
 
