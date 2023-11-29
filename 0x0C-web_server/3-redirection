@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Configure your Nginx server so that /redirect_me is redirecting to another page
-
-sudo apt-get -y update
-sudo apt-get -y install nginx
+sudo apt-get update
+sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 sudo chmod 666 /var/www/html/index.nginx-debian.html
 sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
