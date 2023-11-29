@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Bash script that transfers a file from our client to a server
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <IP> <username> <file path>"
+    exit 1
+fi
+
+scp -P 2222 $3 $2@$1:/tmp/
+
