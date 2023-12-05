@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configure Nginx so that it's HTTP response contains custom header on web-01 and web-02
+sudo apt-get update
+sudo apt-get -y install haproxy
+echo "frontend  devbn3li-frontend
+        bind *:80
+        mode http
+        default_backend devbn3li-backend
+backend devbn3li-backend
+        balance roundrobin
+        server web-01 100.27.10.5:80 check
+        server web-02 100.26.122.89:80 check" | sudo tee -a /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+sudo service haproxy restart
