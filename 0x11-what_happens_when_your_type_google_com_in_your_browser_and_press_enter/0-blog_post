@@ -1,0 +1,31 @@
+Introduction:
+
+When you type “https://www.google.com” into your browser and press Enter, you set in motion a complex sequence of events that involve various components of the web stack. In this blog post, we’ll dive into the intricate workings of this process, covering key aspects such as DNS, TCP/IP, Firewall, HTTPS/SSL, Load-balancer, Web server, Application server, and Database.
+
+1. DNS Request:
+The journey begins with a DNS (Domain Name System) request. The browser sends a query to a DNS resolver to translate the human-readable domain “www.google.com” into an IP address. The resolver might have the answer cached, or it may need to query authoritative DNS servers to find the correct IP.
+
+2. TCP/IP:
+Once the IP address is obtained, the browser initiates a TCP (Transmission Control Protocol) connection. TCP ensures reliable communication between the client (your browser) and the server by breaking down data into packets, numbering them for proper sequencing, and handling retransmission if needed.
+
+3. Firewall:
+The connection passes through firewalls, which act as security barriers. Firewalls monitor and control incoming and outgoing network traffic based on predetermined security rules. They play a crucial role in protecting against unauthorized access and potential threats.
+
+4. HTTPS/SSL:
+In modern web communication, security is paramount. The browser and server establish a secure connection using HTTPS (Hypertext Transfer Protocol Secure) and SSL/TLS (Secure Sockets Layer/Transport Layer Security) protocols. This encryption ensures that the data exchanged between the client and server remains confidential and integral.
+
+5. Load-balancer:
+For popular websites like Google, multiple servers are often employed to distribute the incoming traffic efficiently. A load-balancer sits between the client and the server farm, distributing requests among multiple servers to ensure optimal performance, prevent overloading, and enhance reliability.
+
+6. Web Server:
+The request reaches a web server, which handles static content like HTML, CSS, and images. The web server processes the request, fetches the required resources, and sends them back to the browser.
+
+7. Application Server:
+In more dynamic websites or web applications, an application server comes into play. It executes server-side code, interacts with databases, and generates dynamic content based on the user’s request. This server-side processing could involve languages like PHP, Python, or Node.js.
+
+8. Database:
+If the request involves retrieving or storing data, the application server communicates with a database server. The database stores and manages the structured data, responding to queries and ensuring the retrieval or storage of information requested by the user.
+
+Conclusion:
+
+The seemingly simple act of typing a URL and hitting Enter triggers a sophisticated orchestration of technologies, each playing a crucial role in delivering the content to your browser. Understanding this web stack process provides valuable insights into the underlying infrastructure that powers the internet, making it a fundamental knowledge base for anyone navigating the world of software engineering.
