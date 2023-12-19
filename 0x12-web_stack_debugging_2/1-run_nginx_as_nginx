@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 # Run nginx as nginx user
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo chown -R ubuntu:ubuntu /var/www/html/
-sudo sed -i 's/worker_processes  1/worker_processes 4/' /etc/nginx/nginx.conf
-sudo sed -i 's/worker_connections  768/worker_connections 2048/' /etc/nginx/nginx.conf
-sudo sed -i 's/# multi_accept on;/multi_accept on;/' /etc/nginx/nginx.conf
-sudo sed -i 's/# server_tokens off;/server_tokens off;/' /etc/nginx/nginx.conf
-sudo sed -i 's/keepalive_timeout  65/keepalive_timeout 2/' /etc/nginx/nginx.conf
-sudo sed -i 's/# server_names_hash_bucket_size 64;/server_names_hash_bucket_size 128;/' /etc/nginx/nginx.conf
-sudo service nginx restart
+sudo sed -i "s/user www-data/user nginx/" /etc/nginx/nginx.conf
+sudo sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+pkill apache2
+service nginx start -u nginx
