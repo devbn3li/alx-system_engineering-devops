@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Run nginx as nginx user
-sudo adduser --system --no-create-home --shell /bin/false --group --disabled-login nginx
-pkill -f apache2
-chmod 644 /etc/nginx/nginx.conf
-sed -i "1i user nginx;" /etc/nginx/nginx.conf
-sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
-sudo -u nginx service nginx restart
+chmod 777  /etc/nginx/nginx.conf
+sed -i 's/^user.*;/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+pkill -9 apache
+sudo service nginx restart
