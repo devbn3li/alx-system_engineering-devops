@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #  Bash script that accepts one argument
 
-sudo su $1 whoami
+sudo -u $1 whoami
 
