@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Run nginx as nginx user
+sudo adduser --system --no-create-home --shell /bin/false --group --disabled-login nginx
 pkill -f apache2
 chmod 644 /etc/nginx/nginx.conf
 sed -i "1i user nginx;" /etc/nginx/nginx.conf
