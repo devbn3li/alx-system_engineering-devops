@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name airbnb.com;
+    server_name devbn3li.tech;
          root /var/www/html;
    index  index.html index.htm;
 
