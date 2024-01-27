@@ -1,15 +1,23 @@
 server {
   listen 80 default_server;
+  rewrite ^/redirect_me https://github.com/devbn3li/ permanent;
   listen [::]:80 default_server;
 
-  #Use IP of server as a domain name
-  server_name_
+  root /var/www/html;
 
-  #Customize HTTP response header
-  add_heder X-Served-By 339869-web-01
+  # Add index.php to the list if you are using PHP
+  index index.html index.htm index.nginx-debian.html;
 
-  #Serve /airbnb-onepage/
-  location /airbnb-onepage {
+  server_name 100.27.10.5;
+
+  location / {
+    # First attempt to serve request as file, then
+    # as directory, then fall back to displaying a 404.
+    try_files $uri $uri/ =404;
+  }
+
+  location = /airbnb-onepage/ {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
   }
 
@@ -17,9 +25,4 @@ server {
     proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
   }
 
-  error_page 404 /404.html;
-  location /404 {
-    root /var/www/html;
-    internal;
-  }
 }
