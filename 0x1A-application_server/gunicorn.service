@@ -1,25 +1,15 @@
-server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
+[Unit]
+Description=Gunicorn instance to serve AirBnB Clone
+After=network.target
 
-  #Use IP of server as a domain name
-  server_name_
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
+ExecStart=/path/to/gunicorn --workers 3 --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app --error-logfile /tmp/airbnb-error.log
+Restart=always
+StandardOutput=append:/tmp/airbnb-access.log
+StandardError=append:/tmp/airbnb-error.log
+SyslogIdentifier=gunicorn
 
-  #Customize HTTP response header
-  add_heder X-Served-By 339869-web-01
-
-  #Serve /airbnb-onepage/
-  location /airbnb-onepage {
-    proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
-  }
-
-  location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
-    proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
-  }
-
-  error_page 404 /404.html;
-  location /404 {
-    root /var/www/html;
-    internal;
-  }
-}
+[Install] 
+WantedBy=multi-user.target
